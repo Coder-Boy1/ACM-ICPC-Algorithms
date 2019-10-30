@@ -10,6 +10,8 @@ typedef long double ld;
 #define se second
 #define prec(n) fixed<<setprecision(n)
 
+#define inf 1000000000
+
 vector<vector<pair<ll,ll> > >gr(200001);
 vector<bool>vis(200001,0);
 vector<ll>dist(200001,0);          // distance of the index from the source
@@ -37,7 +39,11 @@ int main()
 		gr[a].pb(mp(b,c));
 		gr[b].pb(mp(a,c));  //comment if directed graph
 	}
+  
+  for(int i=1;i<=n;i++)
+    dist[i] = inf;   // initally all nodes are unreachable from  ( root ~ 1 ) )
+  dist[1] = 0; 
 	dfs(1);
 	for(int i=1;i<n+1;i++)
-	cout<<dist[i]<<" ";
+	  cout<<dist[i]<<" ";
 }
